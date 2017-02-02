@@ -4,18 +4,18 @@
 #
 Name     : parsedatetime
 Version  : 2.2
-Release  : 1
+Release  : 2
 URL      : https://pypi.python.org/packages/62/a3/0c546deec0c1ea5e20320daf7719df9419c2bee97f1a11b9feaf0143b0fc/parsedatetime-2.2.tar.gz
 Source0  : https://pypi.python.org/packages/62/a3/0c546deec0c1ea5e20320daf7719df9419c2bee97f1a11b9feaf0143b0fc/parsedatetime-2.2.tar.gz
 Summary  : Parse human-readable date/time text.
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: parsedatetime-python
-BuildRequires : future
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pytest-runner
 BuildRequires : python-dev
+BuildRequires : python-future
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -37,7 +37,7 @@ python components for the parsedatetime package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1485892296
+export SOURCE_DATE_EPOCH=1486008720
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -47,7 +47,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python2.7/site-packages python2 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1485892296
+export SOURCE_DATE_EPOCH=1486008720
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
