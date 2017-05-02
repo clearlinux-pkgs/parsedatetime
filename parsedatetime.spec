@@ -4,7 +4,7 @@
 #
 Name     : parsedatetime
 Version  : 2.3
-Release  : 4
+Release  : 5
 URL      : http://pypi.debian.net/parsedatetime/parsedatetime-2.3.tar.gz
 Source0  : http://pypi.debian.net/parsedatetime/parsedatetime-2.3.tar.gz
 Summary  : Parse human-readable date/time text.
