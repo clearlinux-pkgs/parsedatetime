@@ -4,26 +4,24 @@
 #
 Name     : parsedatetime
 Version  : 2.4
-Release  : 13
+Release  : 14
 URL      : http://pypi.debian.net/parsedatetime/parsedatetime-2.4.tar.gz
 Source0  : http://pypi.debian.net/parsedatetime/parsedatetime-2.4.tar.gz
 Summary  : Parse human-readable date/time text.
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: parsedatetime-python3
+Requires: parsedatetime-license
 Requires: parsedatetime-python
-BuildRequires : attrs-python
+BuildRequires : atomicwrites-python
+BuildRequires : more-itertools-python
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pluggy-python
-BuildRequires : py-python
 BuildRequires : pytest-python
-
 BuildRequires : python-future
 BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : six
-BuildRequires : six-python
 
 %description
 Parse human-readable date/time strings.
@@ -31,6 +29,14 @@ Parse human-readable date/time strings.
         Python 2.6 or greater is required for parsedatetime version 1.0 or greater.
         
         While we still test with Python 2.6 we cannot guarantee that future changes will not break under 2.6
+
+%package license
+Summary: license components for the parsedatetime package.
+Group: Default
+
+%description license
+license components for the parsedatetime package.
+
 
 %package python
 Summary: python components for the parsedatetime package.
@@ -58,16 +64,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519051103
+export SOURCE_DATE_EPOCH=1530385478
 python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/parsedatetime
+cp LICENSE.txt %{buildroot}/usr/share/doc/parsedatetime/LICENSE.txt
 python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -75,6 +83,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/parsedatetime/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
