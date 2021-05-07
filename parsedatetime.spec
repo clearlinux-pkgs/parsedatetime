@@ -4,7 +4,7 @@
 #
 Name     : parsedatetime
 Version  : 2.5
-Release  : 33
+Release  : 34
 URL      : https://files.pythonhosted.org/packages/5f/19/43357ced106dd1ab6bceb1decb866e8619172fc271991a54eb2f680a2e9b/parsedatetime-2.5.tar.gz
 Source0  : https://files.pythonhosted.org/packages/5f/19/43357ced106dd1ab6bceb1decb866e8619172fc271991a54eb2f680a2e9b/parsedatetime-2.5.tar.gz
 Summary  : Parse human-readable date/time text.
